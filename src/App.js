@@ -5,6 +5,9 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Nav from './components/Nav'
 import ProfileDetails from './components/ProfileDetails'
+import Weather from './components/Weather'
+import Github from './components/Github'
+
 import './App.css';
 
 
@@ -30,13 +33,17 @@ function App() {
 
       <Route 
         path="/" 
+        exact component=
+      {About}
+      />
+      <Route path="/profile" 
         exact 
         render={() => { return <Profile
         projects={projects}/>
-        }}
+        }} 
       />
       <Route
-        path="/:id"
+        path="/profile/:id"
         render={(routeInfo) => {
           const id = routeInfo.match.params.id
           console.log(id);
@@ -44,10 +51,12 @@ function App() {
           return <ProfileDetails project={targetProfile} />
         }}
       />
-      <Route path="/about" exact component=
-      {About} />
-      <Route path="/contact"  exact component=
+      <Route path="/contact"  component=
       {Contact} />
+      <Route path="/weather" component=
+      {Weather} />
+      <Route path="/github" component=
+      {Github} />
     </div>
     </BrowserRouter>
   );
